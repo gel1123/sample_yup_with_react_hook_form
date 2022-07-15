@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import {
   Button,
   Container,
-  CssBaseline,
   List,
   ListItem,
   ListItemText,
@@ -23,7 +22,6 @@ export const QA001 = () => {
     name: "TODO名",
     description: "ここに説明を書く"
   }]);
-  const [newTodo, setNewTodo] = useState("");
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const getTodos = async () => {

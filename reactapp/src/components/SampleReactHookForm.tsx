@@ -10,7 +10,7 @@ export const SampleReactHookForm: React.FC = () => {
   console.log(watch("example"));
   return (
     <div>
-      <h3>AppForm</h3>
+      <h3>[Sample] React Hook Form</h3>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div style={{marginBottom: 10}}><TextField defaultValue="test" {...register("example")} /></div>
         <div style={{marginBottom: 10}}><TextField {...register("exampleRequired", {required: true})} /></div>

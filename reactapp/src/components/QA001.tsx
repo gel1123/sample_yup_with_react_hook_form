@@ -14,7 +14,15 @@ import {
   } from "@mui/material";
 
 export const QA001 = () => {
-  const [todos, setTodos] = useState([] as any[]);
+  const [todos, setTodos] = useState<{
+    id?: string;
+    name: string;
+    description: string;
+  }[]>([{
+    id: "test_data_id",
+    name: "TODO名",
+    description: "ここに説明を書く"
+  }]);
   const [newTodo, setNewTodo] = useState("");
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
@@ -105,28 +113,28 @@ export const QA001 = () => {
           <ListItem key={todo.id} component='li' >
             <Checkbox
               value='primary'
-              onChange={() => deleteTodo(todo.id)}
+              onChange={() => deleteTodo(todo.id as string)}
             />
             <ListItemText>
               Name:[{todo.name}]
               Description:[{todo.description}]
             </ListItemText>
-            {/* <ListItemSecondaryAction>
+            <ListItemSecondaryAction>
               <form>
                 <Input
                   type="text"
                   name="issue"
-                  value={updateissue}
-                  onChange={event => handleUpdate(event)}
+                  // value={updateissue}
+                  // onChange={event => handleUpdate(event)}
                 />
                 <Button
                   type="submit"
-                  onClick={() => updateIssue(item.id)}
+                  // onClick={() => updateIssue(item.id)}
                 >
                   更新
                 </Button>
               </form>
-            </ListItemSecondaryAction> */}
+            </ListItemSecondaryAction>
           </ListItem>
         ))}
       </List>

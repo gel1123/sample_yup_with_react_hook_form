@@ -1,11 +1,11 @@
 import { Container } from '@mui/system';
 import './App.css';
-import { AppForm } from './components/AppForm';
+import { SampleReactHookForm } from './components/SampleReactHookForm';
 
 function App() {
   return (
     <Container style={{paddingTop: 10}}>
-      <AppForm />
+      <SampleReactHookForm />
     </Container>
   );
 }

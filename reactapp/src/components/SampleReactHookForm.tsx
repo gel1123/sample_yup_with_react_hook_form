@@ -2,7 +2,7 @@ import { TextField } from "@mui/material";
 import React from "react";
 import { useForm } from "react-hook-form";
 
-export const AppForm: React.FC = () => {
+export const SampleReactHookForm: React.FC = () => {
   const { register, handleSubmit, watch, formState } = useForm();
   const onSubmit = (data: unknown) => {
     console.log(data);

@@ -142,6 +142,7 @@ export const QA001: React.FC = () => {
             // フックは関数コンポーネントの初期化時にしかコールできないので、TODOごとに専用の関数コンポーネントを作ってやる
             // ※propsなどを理解したら、この関数コンポーネントは別ファイルに分離すべきだが、ここでは説明のために１ファイルでまとめている。
             const Todo: React.FC = () => {
+              // useForm（上記で言うところの「フック」）をしたいがために、Todoを一つずつ関数コンポーネントに分離している。
               const updateForm = useForm({resolver: yupResolver(updateFormSchema)});
               const update = (data: FieldValues) => {
                 const {issue} = data as {issue: string};

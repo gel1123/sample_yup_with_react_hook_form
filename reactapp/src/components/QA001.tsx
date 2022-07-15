@@ -14,7 +14,7 @@ import {
   } from "@mui/material";
 
 export const QA001 = () => {
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState([] as any[]);
   const [newTodo, setNewTodo] = useState("");
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
@@ -59,7 +59,7 @@ export const QA001 = () => {
     }
   };
 
-  const deleteTodo = (id) => {
+  const deleteTodo = (id: string) => {
     axios.delete(`http://localhost:8888/api/rest/tasks/${id}`,
     {
       headers: { "x-hasura-admin-secret": "secret" }

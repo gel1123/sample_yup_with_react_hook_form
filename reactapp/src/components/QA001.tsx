@@ -28,11 +28,9 @@ export const QA001 = () => {
   const [description, setDescription] = useState("");
   const getTodos = async () => {
     try {
-      const result = await axios.get('http://localhost:8888/api/rest/tasks',
-    {
-      headers: { "x-hasura-admin-secret": "secret" }
-    }
-      )
+      const result = await axios.get("http://localhost:8888/api/rest/tasks", {
+        headers: { "x-hasura-admin-secret": "secret" },
+      });
       setTodos(result.data.tasks);
       console.log(result.data.tasks);
     } catch (error) {
@@ -68,77 +66,71 @@ export const QA001 = () => {
   };
 
   const deleteTodo = (id: string) => {
-    axios.delete(`http://localhost:8888/api/rest/tasks/${id}`,
-    {
-      headers: { "x-hasura-admin-secret": "secret" }
-    })
-    .then(response => {
-      getTodos();
-      console.log("set")
-    }).catch(data =>  {
-      console.log(data)
-    })
+    axios
+      .delete(`http://localhost:8888/api/rest/tasks/${id}`, {
+        headers: { "x-hasura-admin-secret": "secret" },
+      })
+      .then((response) => {
+        getTodos();
+        console.log("set");
+      })
+      .catch((data) => {
+        console.log(data);
+      });
   }
 
   return (
     <>
-    <Container component='main' maxWidth='xs'>
+      <Container component="main" maxWidth="xs">
         <form onSubmit={handleSaveTodo}>
           <Input
-              type="text"
-              name="name"
-              value={name}
-              placeholder="Enter name"
-              onChange={event => setName(event.target.value)}
+            type="text"
+            name="name"
+            value={name}
+            placeholder="Enter name"
+            onChange={(event) => setName(event.target.value)}
           />
           <TextField
-              type="text"
-              name="description"
-              value={description}
-              placeholder="Enter description"
-              onChange={event => setDescription(event.target.value)}
+            type="text"
+            name="description"
+            value={description}
+            placeholder="Enter description"
+            onChange={(event) => setDescription(event.target.value)}
           />
-          <Button
-            type="submit"
-            variant='contained'
-            color='primary'>
-              作成
+          <Button type="submit" variant="contained" color="primary">
+            作成
           </Button>
         </form>
-      <List
-        style={{marginTop: '48px'}}
-        component='ul'
-      >
-        {todos.map(todo => (
-          <ListItem key={todo.id} component='li' >
-            <Checkbox
-              value='primary'
-              onChange={() => deleteTodo(todo.id as string)}
-            />
-            <ListItemText>
-              Name:[{todo.name}]
-              Description:[{todo.description}]
-            </ListItemText>
-            <ListItemSecondaryAction>
-              <form>
-                <Input
-                  type="text"
-                  name="issue"
-                  // value={updateissue}
-                  // onChange={event => handleUpdate(event)}
-                />
-                <Button
-                  type="submit"
-                  // onClick={() => updateIssue(item.id)}
-                >
-                  更新
-                </Button>
-              </form>
-            </ListItemSecondaryAction>
-          </ListItem>
-        ))}
-      </List>
-    </Container>
-  </>
+        <List style={{ marginTop: "48px" }} component="ul">
+          {todos.map((todo) => (
+            <ListItem key={todo.id} component="li">
+              <Checkbox
+                value="primary"
+                onChange={() => deleteTodo(todo.id as string)}
+              />
+              <ListItemText>
+                Name:[{todo.name}] Description:[{todo.description}]
+              </ListItemText>
+              <ListItemSecondaryAction>
+                <form>
+                  <Input
+                    type="text"
+                    name="issue"
+                    // value={updateissue}
+                    // onChange={event => handleUpdate(event)}
+                  />
+                  <Button
+                    type="submit"
+                    // onClick={() => updateIssue(item.id)}
+                  >
+                    更新
+                  </Button>
+                </form>
+              </ListItemSecondaryAction>
+            </ListItem>
+          ))}
+        </List>
+      </Container>
+    </>
   );
 }
